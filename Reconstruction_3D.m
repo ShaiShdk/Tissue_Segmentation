@@ -1,20 +1,15 @@
 %% Version III -- XZ and YZ through local max , XY through masking
 
-clc ; clear ; %close all
-
-tic
-
 tmin = 1 ;
 tmax = 30 ; 
 
-cd '/Users/Sharr/Dropbox/PostDoc/Projects/Morphogenesis/Codes and ImageProcessing/Stress_Flow_Analysis/DynamicalAnalysis/Codes'
+cd 'parent_directory'
 orgdir = pwd;
 
-cd '/Users/Sharr/Dropbox/PostDoc/Projects/Morphogenesis/Codes and ImageProcessing/Stress_Flow_Analysis/DynamicalAnalysis/Set3Data/SegtFilter_z15_31'
+cd 'save_directory'
 savedir = pwd;
 
-% cd '/Users/Sharr/Dropbox/PostDoc/Projects/Morphogenesis/Codes and ImageProcessing/Stress_Flow_Analysis/Set3_Myosin/Myo_Stacks_Symmetrized'
-cd '/Users/Sharr/Dropbox/PostDoc/Projects/Morphogenesis/Codes and ImageProcessing/Stress_Flow_Analysis/Set5_Membrane/Membrane30/Mem30'
+% cd 'image_directory'
 imgdir = pwd ;
 
 fsample = sprintf('Set5_mem_%02d.tif' , tmin);
@@ -27,12 +22,12 @@ xmin = 1;%601;
 xmax = Nx;%1650;
 N_x = xmax - xmin + 1;
 
-ymin = 1;%151;
-ymax = Ny;%Ny - 150;
+ymin = 1;
+ymax = Ny;
 N_y = ymax - ymin + 1;
 
-zmin = 2;%15;%4;%15;7       % this is the minimum z-level above which the 
-zmax = 9;%31;%20;
+zmin = 2;                      % this is the minimum z-level above which the 
+zmax = 9;
 N_z = zmax - zmin + 1;
 
 bg_rad = 30;
@@ -61,7 +56,6 @@ for tt = 20 : 20
     
     cd(imgdir);
 
-%     stName = sprintf('S2_Myo_%02d.tif' , tt);
     stName = sprintf('Set5_mem_%02d.tif' , tt);
     IB = zeros(N_z , N_y , N_x);      % Image Block
     Iraw = zeros(N_y , N_x , N_z);      % Image Block
@@ -196,9 +190,7 @@ for tt = 20 : 20
     for zz = 1 : N_z
         imwrite(I_tot(:,:,zz) , saveNameTot , 'WriteMode', 'append', 'Compression', 'none');                
     end
-    
-   toc
-   
+       
 end
 
 cd(orgdir); 
