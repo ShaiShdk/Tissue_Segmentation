@@ -9,7 +9,7 @@ orgdir = pwd;
 cd 'save_directory'
 savedir = pwd;
 
-% cd 'image_directory'
+cd 'image_directory'
 imgdir = pwd ;
 
 fsample = sprintf('Set5_mem_%02d.tif' , tmin);
